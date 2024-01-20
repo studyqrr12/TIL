@@ -2,15 +2,23 @@
 
 자바는 프로그래밍 언어중 하나 입니다.
 
-자바는 언어를 의미하지만 사용자는 자바 프로그램, 자바를 실행할 수 있는 환경(JVM) 을 포함하기도 합니다.
+자바는 언어를 의미하지만 사용자는 자바 프로그램, 자바를 실행할 수 있는 환경(JRE) 을 포함하기도 합니다.
 
-## Java, JVM, JDK
+## Java, JVM, JRE, JDK
 
 Java 는 언어 입니다.
 
-JVM(Java Virtual Machine) 은 Java로 작성된 프로그램을 실행하는 런타임 환경입니다.
+JVM(Java Virtual Machine)은 Java로 작성된 프로그램을 실행하는 가상머신입니다.
 
-JDK(Java Development Kit) 는 JVM(Java Virtual Machine) 을 포함하며 Java 언어로 프로그램을 작성하고 빌드하는 등 개발 도구를 포함합니다.
+바이트코드(클래스) 실행, 메모리 관리, 스레드 관리, 예외 처리 등의 역할을 수행합니다.
+
+JRE(Java Runtime Environment)는 Java 프로그램을 실행하기 위한 환경을 포함한 패키지 입니다.
+
+JVM 은 코드를 해석하고 실행하며 표준 Java API 클래스들은 JVM 이 아닌 JRE에 포함되어 있습니다.
+
+Java 프로그램을 사용하는 사용자들이 설치하는 Java 프로그램은 JRE를 의미합니다.
+
+JDK(Java Development Kit)는 JVM(Java Virtual Machine) 을 포함하며 Java 언어로 프로그램을 작성하고 빌드하는 등 개발 도구를 포함합니다.
 
 ## 자바는 인터프리터 언어? 컴파일 언어?
 
@@ -47,4 +55,3 @@ JDK(Java Development Kit) 는 JVM(Java Virtual Machine) 을 포함하며 Java �
 느린 실행 속도를 이전보다 개선할 수 있습니다.
 
 (단, 해석 과정은 필요하기 때문에 높은 퍼포먼스가 필요하다면 저수준 언어의 네이티브 구현이 필요합니다)
-
