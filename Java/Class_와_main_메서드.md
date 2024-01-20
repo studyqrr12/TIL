@@ -48,6 +48,8 @@ java 프로그램을 실행할때 클래스명 뒤에 공백으로 구분해서 
 
 또한 인스턴스를 생성하지 않고 호출하기 때문에 static 메소드로 작성할 필요가 있습니다.
 
+만약 public, static 둘중 하나가 바뀐다면 error: 'main' method is not declared 'public static' 에러를 만날 수 있습니다.
+
 main 함수에서 반환해야 하는 값이 없어야 하기 때문에 void 입니다.
 
 만약 main 메소드가 int 를 반환하도록 수정하면 error: 'main' method is not declared with a return type of 'void' 에러를 만날 수 있습니다.
