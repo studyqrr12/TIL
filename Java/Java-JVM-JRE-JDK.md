@@ -1,12 +1,8 @@
-# Java
+# Java, JVM, JRE, JDK
 
 자바는 프로그래밍 언어중 하나 입니다.
 
 자바는 언어를 의미하지만 사용자는 자바 프로그램, 자바를 실행할 수 있는 환경(JRE) 을 포함하기도 합니다.
-
-## Java, JVM, JRE, JDK
-
-Java 는 언어 입니다.
 
 JVM(Java Virtual Machine)은 Java로 작성된 프로그램을 실행하는 가상머신입니다.
 
