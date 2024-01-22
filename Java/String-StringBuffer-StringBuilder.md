@@ -44,7 +44,7 @@ String은 객체이므로 "값" 이 아니라 가상 메모리 "주소"를 변�
 
 그리고 == 기호는 객체일때 가상 메모리 주소를 비교합니다.
 
-문자열 리터럴 (") 를 사용해서 작성했을때는 같은 문자일 경우 string constant pool 이라는 영역에 저장되어 재사용됩니다.
+문자열 리터럴 (") 를 사용해서 작성했을때 string constant pool 이라는 영역에 저장되어 재사용됩니다.
 
 따라서 처음 "Hello" === "Hello" 는 String Pool 영역에서 가져오기 때문에 동일한 값을 참조합니다.
 
@@ -110,7 +110,7 @@ StringBuffer는 내부에 있는 char 배열을 조작합니다.
 
 그럼 StringBuilder와 StringBuffer의 차이점은 무엇인가.
 
-둘다 내부에 있는 char 배열을 조작하지만 StringBuilder는 동기화를 보장하지 않고 StringBuffer는 보장합니다.
+둘다 내부에 있는 char 배열을 조작하지만 StringBuilder는 동기화를 보장하지 않고 StringBuilder는 보장합니다.
 
 하나의 쓰레드 안에서만 실행된다면 동기화 로직이 없는 StringBuffer가 더 빠른 성능을 가질 수 있습니다.
 
