@@ -258,8 +258,87 @@ class UserFileRepositoryupdateUserDto [pk=-1, name=테스트]
 class UserFileRepositoryselectUserDto [pk=0, name=null]
 ```
 
-## Annotation (어노테이션)
+## Annotation (어노테이션) 과 Reflection (리플렉션)
 
-## Reflection (리플렉션)
+어노테이션은 기본 제공되는 표준 어노테이션 (Override, Deprecated, FunctionalInterface, SuppressWarning, SafeVaragrs)이 있고 개발자가 직접 정의한 어노테이션이 있습니다.
+
+어노테이션은 IDE 지원, 문서화, 메타데이터, 컴파일 시점에 사용될 수 있습니다.
+
+아래 코드는 Bean 이라는 커스텀 어노테이션을 만들고 만약 어노테이션이 선언된 클래스가 있다면 Container 클래스가 기본 생성자를 호출해 인스턴스를 만들고 HashMap에 보관합니다.
+
+**코드**
+```
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Inherited;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
+@Retention(value = RetentionPolicy.RUNTIME)
+@Target(value = ElementType.TYPE)
+@Inherited
+public @interface Bean {
+	public String value() default "";
+}
+
+import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
+
+public class Container {
+	private Map<String, Object> container;
+
+	public Container() {
+		container = new HashMap();
+
+		File file = new File("./bin");
+		if (file.isDirectory()) {
+			for (File fileItem : file.listFiles()) {
+				if (fileItem.isFile() && fileItem.getName().endsWith(".class")) {
+					String clazzName = fileItem.toString().substring(file.toString().length() + 1);
+					clazzName = clazzName.substring(0, clazzName.length() - ".class".length());
+
+					try {
+						Class<?> clazz = Class.forName(clazzName);
+						if (clazz.isAnnotationPresent(Bean.class)) {
+							Object instance = clazz.getConstructor().newInstance();
+							container.put(clazzName, instance);
+						}
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+			}
+		}
+	}
+
+	@Override
+	public String toString() {
+		return container.toString();
+	}
+}
+
+public class Main {
+	public static void main(String[] args) {
+		Container container = new Container();
+		System.out.println(container);
+	}
+}
+
+@Bean
+public class Object1 {
+
+}
+
+@Bean
+public class Object2 {
+
+}
+```
+
+**출력**
+```
+{Object1=Object1@33e5ccce, Object2=Object2@5a42bbf4}
+```
 
 ## AbstractProcessor
